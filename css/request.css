@@ -1,0 +1,523 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+/*@font-face {
+  font-family: Proxima;
+  src: url('../fonts/ProximaNova.otf');
+}
+@font-face {
+  font-family: SegoeS;
+  src: url('../fonts/Segoe Script.ttf');
+}*/
+body, input, option, select {
+  font-family: "Poppins"!important;
+}
+#total-price-label {
+  display: block;
+  text-align: center;
+  font-size: 1.3rem;
+  color: var(--text)!important;
+}
+#total-price {
+  color: var(--highlight1);
+}
+.request-head {
+  display: block;
+  text-align: center;
+  font-size: 2rem;
+  color: var(--text)!important;
+}
+.request-desc {
+  display: block;
+  text-align: center;
+  color: var(--text)!important;
+}
+.request-top-label {
+  color: var(--text)!important;
+  font-size: 2.5rem;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+  padding: 20px;
+  padding-top: 0;
+}
+.request-box {
+  margin: 0 auto;
+  max-width: 720px;
+  /*height: 100%;*/
+  background: var(--bg-dark2);
+  padding: 20px;
+  border-radius: 10px;
+}
+.request-label {
+  color: var(--text)!important;
+  font-size: 1.75rem;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+  padding: 10px;
+}
+.request-body {
+  height: 85%;
+}
+.request-content {
+  height: 100%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  display: none;
+  animation: fade 650ms ease-in-out forwards;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(200%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(.75);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+.request-content.active {
+  animation: slide 650ms ease-in-out both;
+}
+.hide {
+  display: none;
+}
+.request-row {
+  display: flex;
+  justify-content: space-evenly;
+}
+.request-content.active {
+  display: flex;
+}
+.request-bottom {
+  justify-content: center;
+  display: flex;
+}
+.request-next-button, .request-back-button, .request-submit-button {
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  transition: all .3s ease-in-out;
+  color: var(--text)!important;
+  background-color: var(--highlight1) !important;
+  width: 200px;
+  height: 60px;
+  margin: 0 auto;
+  margin-bottom: 25px;
+  transition: .35s ease;
+}
+.request-submit-button { 
+  background-color: var(--highlight7) !important;
+}
+.request-back-button {
+  background-color: var(--status-off) !important;
+}
+.request-next-button:hover, .request-back-button:hover, .request-submit-button:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+.form-group {
+  text-align: center;
+}
+.form-group label {
+  color: var(--text);
+  font-size: 1.25rem;
+}
+.form-group small {
+  margin-top: 10px;
+}
+form {
+  height: 100%;
+  overflow: hidden;
+}
+
+.request-content input, #inputAnimationType, #inputArtworkType, #inputDelivery, #inputPayment, #searchbar, #inputInfo {
+  background-color: #3c4054;
+  border: none;
+  color: var(--text-darker) !important;
+  text-align: center;
+  text-align-last:center;
+  height: 60px;
+}
+.request-content input:focus, textarea:focus {
+  background-color: #3c4054;
+  border: none;
+  color: var(--text-darker) !important;
+  text-align: center;
+  text-align-last:center;
+}
+
+/*------------
+PROGRESS BAR
+--------------*/
+ul.progress_bar {
+  max-width: 29em;
+  width: 100%;
+  padding: 0 18px;
+  height: 2em;
+  margin: 0 auto;
+  padding: 0;
+  transform: translateX(-18px);
+  font-size: 18px; /* change font size only to scale*/
+}
+
+ul.progress_bar li {
+  width: 25%;
+  float: left;
+  height: 100%;
+  list-style: none;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+/*------------
+LINE COLORS
+--------------*/
+ul.progress_bar li span {
+  position: absolute;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: .4em;
+  z-index: 1;
+  transition: transform 1s;
+  background-color: var(--bg-dark);
+}
+.line::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s;
+  z-index: -1;
+}
+.line {
+  border-bottom: none!important;
+}
+.line.line1::before {
+  background: linear-gradient(90deg, rgba(109,127,204,1) 0%, rgba(114,109,203,1) 100%); 
+}
+.line.line2::before {
+  background: linear-gradient(90deg, rgba(114,109,203,1) 0%, rgba(162,109,203,1) 100%); 
+}
+.line.line3::before {
+  background: linear-gradient(90deg, rgba(162,109,203,1) 0%, rgba(185,109,203,1) 100%);
+}
+.line.line4::before {
+  background: linear-gradient(90deg, rgba(203,109,198,1) 0%, rgba(203,109,150,1) 100%);  
+}
+/*.line.line_current::before  {
+  opacity: 1;
+}*/
+/*------------
+ACTIVATED/CURRENT DOT COLORS
+--------------*/
+ul.progress_bar li.dot_current.dot1:before {
+  background: #6D7FCC;
+  box-sizing: border-box;
+}
+ul.progress_bar li.dot_current.dot2:before {
+  background: #726dcb;
+  box-sizing: border-box;
+}
+ul.progress_bar li.dot_current.dot3:before {
+  background: #a26dcb;
+  box-sizing: border-box;
+}
+ul.progress_bar li.dot_current.dot4:before {
+  background: #b96dcb;
+  box-sizing: border-box;
+}
+
+/*------------
+DOT COLORS
+--------------*/
+ul.progress_bar li:before{
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2em;
+    height: 2em;
+    border-radius: 2em;
+    z-index: 2;
+    background: var(--bg-dark2);
+    transition: all 0.9s;
+    transition-delay: 0.1s;
+}
+ul.progress_bar li:nth-child(1):before{
+    border: 0.2em solid var(--highlight1);
+    box-sizing: border-box;
+}
+ul.progress_bar li:nth-child(2):before{
+    border: 0.2em solid var(--highlight2);
+    box-sizing: border-box;
+}
+ul.progress_bar li:nth-child(3):before{
+    border: 0.2em solid var(--highlight4);
+    box-sizing: border-box;
+}
+ul.progress_bar li:nth-child(4):before{
+    border: 0.2em solid var(--highlight5);
+    box-sizing: border-box;
+}
+ul.progress_bar li:last-child:after{
+    content: '';
+    display: block;
+    position: absolute;
+    right: -2em;
+    top: 0;
+    width: 2em;
+    height: 2em;
+    border-radius: 2em;
+    z-index: 2;
+    border: 0.2em solid var(--highlight7)!important;
+    box-sizing: border-box;
+}
+
+/*----------------
+  CHECKBOXES
+-----------------*/
+.featureSelection input, .tipSelection input {
+  display: none!important;
+}
+.checkboxnew, .tipSelection input {
+  display: inline-block;
+  min-width: 200px;
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
+  border: 3px solid var(--highlight4);
+  cursor: pointer;
+  user-select: none;
+  transition: 0.35s ease;
+}
+.featureSelection input:checked ~ label {
+  background: var(--highlight4);
+}
+.featureSelection input:hover:checked ~ label {
+  background-color: var(--highlight4);
+  filter:brightness(1.1);
+  transform: scale(0.95);
+}
+.featureSelection input:hover ~ label {
+  background-color: var(--highlight4);
+  filter:brightness(1.5);
+  transform: scale(1.05);
+}
+
+.tipSelection input {
+  border: none;
+  border-color: var(--highlight7);;
+}
+.tipSelection input:checked ~ label {
+  background: var(--highlight7);
+}
+.tipSelection input:hover:checked ~ label {
+  background-color: var(--highlight7);
+  filter:brightness(1.1);
+  transform: scale(0.95);
+}
+.tipSelection input:hover ~ label {
+  background-color: var(--highlight7);
+  filter:brightness(1.5);
+  transform: scale(1.05);
+}
+
+.checkbox-hidden {
+  display: none;
+}
+
+/* The checkboxcon */
+.checkboxcon {
+  display: inline;
+  position: relative;
+  padding-left: 25px!important;
+  /*margin-bottom: 12px;*/
+  cursor: pointer;
+  /*font-size: 22px;*/
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.checkboxcon input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 1px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #2A2D3E;
+  border: 2px solid #484d6a;
+}
+
+/* background color on hover, uncheck */
+.checkboxcon:hover input ~ .checkmark {
+  background-color: #34384f;
+}
+
+/* when checked, background color */
+.checkboxcon input:checked ~ .checkmark {
+  background-color: #6D7FCC;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkboxcon input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkboxcon .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
+@media (max-width: 768px) {
+  .request-row {
+      display: block;
+  }
+  .request-content {
+      justify-content: center
+  }
+  .request-box {
+      max-height: auto;
+      height: auto;
+  }
+  .request-next-button, .request-back-button, .request-submit-button { 
+     margin: 10px;
+     height: 50px;
+  }
+  .request-content input, #inputAnimationType, #inputArtworkType, #inputDelivery, #inputPayment, #searchbar {
+      height: 60px;
+      font-size: 1.05rem;
+  }
+  ul.progress_bar {
+      font-size: 15px; /* change font size only to scale*/
+  }
+  .featureSelection .form-group {
+      padding-left: 0;
+      padding-right: 0;
+  }
+}
+/*----------------
+    NOTICE
+-----------------*/
+
+.notice {
+  margin: 0 auto;
+  text-align: center;
+  background: var(--b-darker);
+  color: var(--text);
+  height: 50px;
+  display: flex;
+  font-size: 1rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 720px!important;
+}
+.notice-text {
+  transform: translateX(105%);
+  animation: my-animation 10s linear infinite;
+}
+.gradient {
+  width: 10%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  background: linear-gradient(90deg, rgb(60, 64, 84) 0%, rgba(0, 0, 0, 0) 100%);
+  z-index: 1;
+}
+.gradient2 {
+  width: 10%;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  background: linear-gradient(-90deg, rgb(60, 64, 84) 0%, rgba(0, 0, 0, 0) 100%);
+  z-index: 1;
+}
+@keyframes my-animation {
+from {
+  transform: translateX(105%);
+}
+to {
+  transform: translateX(-105%);
+}
+}
+@media (max-width: 768px) {
+.notice-text {
+  transform: translateX(80%);
+  animation: my-animation 15s linear infinite;
+}
+@keyframes my-animation {
+  from {
+    transform: translateX(80%);
+  }
+  to {
+    transform: translateX(-80%);
+  }
+}
+}
